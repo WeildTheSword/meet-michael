@@ -96,24 +96,27 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .team{margin-top:6px;display:grid;gap:14px;text-align:left;transition:opacity .5s ease,transform .6s ease}
 .p{opacity:0;transform:translateY(16px);transition:opacity .6s ease var(--d,0s),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
 .scene.ppl .p,.scene.ppl .eb{opacity:1;transform:none}
-.p .face{display:block;object-fit:cover;border-radius:50%;box-shadow:0 8px 20px rgba(20,20,20,.18);transform:scale(.4)}
-.scene.ppl .p .face{animation:pop .75s cubic-bezier(.3,1.7,.5,1) var(--d,0s) both,drift 3.4s ease-in-out calc(var(--d,0s) + .75s) infinite alternate}
+.p .face{display:block;object-fit:cover;border-radius:50%;box-shadow:0 8px 20px rgba(20,20,20,.18)}
+.scene.ppl .p .face{animation:rise .8s cubic-bezier(.2,.7,.2,1) var(--d,0s) both,drift 4s ease-in-out calc(var(--d,0s) + .8s) infinite alternate}
 .p .nm{font-weight:800;font-size:22px;line-height:1.05;letter-spacing:-.01em}
 .p .rl{margin-top:4px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-ink)}
+.role{display:block;margin-top:5px;font-family:var(--sans);font-weight:800;font-size:15px;line-height:1.2;color:var(--ink)}
+.eb .role{margin-top:4px}
 .me{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}
 .me .face{width:76px;height:76px;object-position:50% 10%;background:var(--orange)}
-.eb{padding-top:12px;border-top:1.5px solid var(--ink);opacity:0;transform:translateX(-14px);transition:opacity .5s ease var(--d,0s),transform .6s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
-.eb .mi{display:inline-block;width:1.05em;height:1.05em;vertical-align:-.14em;animation:think 1.5s ease-in-out infinite}
+.eb{padding-top:12px;border-top:1.5px solid var(--ink);opacity:0;transform:translateY(10px);transition:opacity .5s ease var(--d,0s),transform .6s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.eb .mi{display:inline-block;width:1.05em;height:1.05em;vertical-align:-.14em}
 @keyframes think{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
 .eb .sg{display:block;font-family:var(--sans);font-weight:800;font-size:clamp(24px,7vw,32px);letter-spacing:-.02em;line-height:1;color:#A31F34}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center}
 .pair .face{width:96px;height:96px;margin:0 auto 10px}
 .pair .nm{font-size:20px}
 .p .ex{margin-top:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 10px;align-items:center}
-.p .ex img{height:16px;width:auto;opacity:0;transform:scale(.3)}
-.scene.ppl .p .ex img{animation:pop .5s cubic-bezier(.3,1.7,.5,1) calc(var(--d,0s) + .6s + var(--i)*.12s) both}
+.p .ex img{height:16px;width:auto;opacity:0}
+.scene.ppl .p .ex img{animation:fadein .6s ease calc(var(--d,0s) + .5s + var(--i)*.08s) both}
 .pair .p:nth-child(2) .face{animation-duration:.75s,3.9s}
-@keyframes pop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+@keyframes rise{from{opacity:0;transform:translateY(10px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
 @keyframes drift{from{transform:translateY(-3px)}to{transform:translateY(4px)}}
 .box{position:relative}
 .merge .brand{position:absolute;inset:0;justify-content:center;opacity:0;transform:scale(.85);transition:opacity .5s ease .75s,transform .6s cubic-bezier(.2,.7,.2,1) .75s}
@@ -232,9 +235,9 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
       <div class="team">
         <div class="p me" style="--d:.2s">
           <img class="face" src="img/michael.webp" alt="">
-          <div><div class="nm">Michael Weild</div><div class="rl">Founding GTM · Tulane</div></div>
+          <div><div class="nm">Michael Weild</div><div class="role">Running market strategy</div></div>
         </div>
-        <div class="eb" style="--d:.7s"><span class="sg">The MIT Minds <svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 1.6c-4.7 0-8.5 3.6-8.5 8.1 0 .9.1 1.7.4 2.5L3.2 15.6c-.3.5.1 1 .6 1H5.6v2.6c0 1.2 1 2.2 2.2 2.2h2v1.5h9.1v-5.3c1.8-1.6 3-3.9 3-6.5 0-4.9-3.9-9.5-8.5-9.5z" fill="#A31F34"/><g fill="#F8F7F4"><circle cx="11.4" cy="7.6" r="2.1"/><circle cx="14.3" cy="6.4" r="2.2"/><circle cx="17" cy="8.3" r="2"/><circle cx="16.4" cy="11.2" r="1.9"/><circle cx="13.6" cy="10.6" r="2.2"/><circle cx="10.6" cy="10.2" r="1.7"/><path d="M13.6 11.5h1.6l-.4 3.2h-.8z"/></g></svg></span></div>
+        <div class="eb" style="--d:.7s"><span class="sg">The MIT Minds <svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 1.6c-4.7 0-8.5 3.6-8.5 8.1 0 .9.1 1.7.4 2.5L3.2 15.6c-.3.5.1 1 .6 1H5.6v2.6c0 1.2 1 2.2 2.2 2.2h2v1.5h9.1v-5.3c1.8-1.6 3-3.9 3-6.5 0-4.9-3.9-9.5-8.5-9.5z" fill="#A31F34"/><g fill="#F8F7F4"><circle cx="11.4" cy="7.6" r="2.1"/><circle cx="14.3" cy="6.4" r="2.2"/><circle cx="17" cy="8.3" r="2"/><circle cx="16.4" cy="11.2" r="1.9"/><circle cx="13.6" cy="10.6" r="2.2"/><circle cx="10.6" cy="10.2" r="1.7"/><path d="M13.6 11.5h1.6l-.4 3.2h-.8z"/></g></svg></span><span class="role">Technical Development &amp; Investment</span></div>
         <div class="pair">
           <div class="p f" style="--d:1s">
             <img class="face" src="img/jack.webp" alt="">
@@ -363,7 +366,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
   // Float the Tulane shield beside Michael's row and the MIT logo beside the "genius engineers" line.
   function placeLogos(){const me=document.querySelector('#s8 .me'),eb=document.querySelector('#s8 .eb');
     document.querySelector('#s8 .lg.t').style.setProperty('--y',(me.offsetTop+me.offsetHeight/2)+'px');
-    document.querySelector('#s8 .lg.m').style.setProperty('--y',(eb.offsetTop+12+(eb.offsetHeight-12)/2)+'px')}
+    const sg=eb.querySelector('.sg');document.querySelector('#s8 .lg.m').style.setProperty('--y',(sg.offsetTop+sg.offsetHeight/2)+'px')}
   function end(){timers.forEach(clearTimeout);timers=[];SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2','fuse3','bigt','swap','ppl'));stage.hidden=true;final.style.visibility='visible';final.classList.add('on');window.scrollTo(0,0);chars.forEach(c=>c.classList.add('v'))}
   function play(){
     timers.forEach(clearTimeout);timers=[];
