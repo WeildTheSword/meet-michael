@@ -116,9 +116,9 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .merge{position:absolute;inset:0;pointer-events:none}
 .lg{position:absolute;transform:translate(-50%,-50%);opacity:0;transition:left 1s cubic-bezier(.5,0,.2,1),top 1s cubic-bezier(.5,0,.2,1),opacity .4s ease}
 .lg img{display:block;width:auto}
-.lg.t{left:86%;top:7%}
+.lg.t{left:86%;top:var(--y,7%)}
 .lg.t img{height:44px}
-.lg.m{left:88%;top:24%}
+.lg.m{left:88%;top:var(--y,24%)}
 .lg.m img{height:22px}
 .scene.ppl .lg{opacity:1;transition-delay:0s,0s,1.2s}
 .scene.on .lg img{animation:drift 3.6s ease-in-out infinite alternate}
@@ -218,12 +218,12 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
           <img class="face" src="img/michael.webp" alt="">
           <div><div class="nm">Michael Weild</div><div class="rl">Founding GTM · Tulane</div></div>
         </div>
-        <div class="eb" style="transition-delay:.7s">The tech geniuses behind Subconscious</div>
+        <div class="eb" style="transition-delay:.7s">The genius engineers behind the product</div>
         <div class="p f" style="transition-delay:1s">
           <img class="face" src="img/jack.webp" alt="">
           <div>
             <div class="nm">Jack O'Brien</div><div class="rl">CEO · Co-founder</div>
-            <div class="cr">Two-time founder. Led blockchain at IBM, tech lead at Google, former CTO of Sandhill Markets. Princeton CS, MIT MBA.</div>
+            <div class="cr">Ex-Google tech lead &amp; IBM engineer · MIT MBA</div>
             <div class="ex"><img src="img/mit.webp" alt="MIT"><img src="img/ibm.webp" alt="IBM"><img src="img/google.webp" alt="Google"><img src="img/sandhill.webp" alt="Sandhill"></div>
           </div>
         </div>
@@ -231,7 +231,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
           <img class="face" src="img/hongyin.webp" alt="">
           <div>
             <div class="nm">Hongyin Luo</div><div class="rl">CTO · Co-founder</div>
-            <div class="cr">AI researcher at MIT CSAIL, MIT PhD. Lead author of TIMRUN, the research behind Subconscious. <b>#1 Paper of the Day</b> on Hugging Face.</div>
+            <div class="cr">MIT CSAIL PhD · lead author of TIMRUN</div>
             <div class="ex"><img src="img/csail.webp" alt="MIT CSAIL"><img src="img/tsinghua.webp" alt="Tsinghua University"><img src="img/aws.webp" alt="AWS"><img src="img/googleai.webp" alt="Google AI"></div>
           </div>
         </div>
@@ -336,8 +336,12 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
     else if(c.nodeName.toLowerCase()==='svg'){c.classList.add('ch');chars.push(c)}
     else split(c)})})(head);
   function typeHead(t0){chars.forEach(c=>c.classList.remove('v','cur'));
-    chars.forEach((c,i)=>at(t0+i*28,()=>{if(i)chars[i-1].classList.remove('cur');c.classList.add('v','cur')}));
-    at(t0+chars.length*28+900,()=>chars[chars.length-1].classList.remove('cur'))}
+    chars.forEach((c,i)=>at(t0+i*37,()=>{if(i)chars[i-1].classList.remove('cur');c.classList.add('v','cur')}));
+    at(t0+chars.length*37+900,()=>chars[chars.length-1].classList.remove('cur'))}
+  // Float the Tulane shield beside Michael's row and the MIT logo beside the "genius engineers" line.
+  function placeLogos(){const me=document.querySelector('#s8 .me'),eb=document.querySelector('#s8 .eb');
+    document.querySelector('#s8 .lg.t').style.setProperty('--y',(me.offsetTop+me.offsetHeight/2)+'px');
+    document.querySelector('#s8 .lg.m').style.setProperty('--y',(eb.offsetTop+12+(eb.offsetHeight-12)/2)+'px')}
   function end(){timers.forEach(clearTimeout);timers=[];SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2','fuse3','bigt','swap','ppl'));stage.hidden=true;final.style.visibility='visible';final.classList.add('on');window.scrollTo(0,0);chars.forEach(c=>c.classList.add('v'))}
   function play(){
     timers.forEach(clearTimeout);timers=[];
@@ -347,12 +351,12 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
     at(1700,()=>{show('s2');count()});
     at(5200,()=>show('s3'));
     at(8600,()=>{$('s8').classList.add('bigt');show('s8');typeHead(300)});
-    at(11100,()=>$('s8').classList.add('swap'));
-    at(11400,()=>{const e=$('s8');e.classList.remove('bigt','swap');e.classList.add('ppl')});
-    at(15700,()=>$('s8').classList.add('fuse'));
-    at(16400,()=>$('s8').classList.add('fuse2'));
-    at(19000,()=>$('s8').classList.add('fuse3'));
-    at(21800,end);
+    at(11800,()=>$('s8').classList.add('swap'));
+    at(12050,()=>{const e=$('s8');e.classList.remove('bigt','swap');e.classList.add('ppl');placeLogos()});
+    at(16100,()=>$('s8').classList.add('fuse'));
+    at(16800,()=>$('s8').classList.add('fuse2'));
+    at(19400,()=>$('s8').classList.add('fuse3'));
+    at(22200,end);
   }
   $('replay').addEventListener('click',play);
   $('copyPhone').addEventListener('click',async e=>{const b=e.currentTarget;
