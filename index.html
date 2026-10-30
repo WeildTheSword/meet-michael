@@ -95,7 +95,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 /* founders: people first, then Tulane + MIT merge into the mark */
 .team{margin-top:14px;display:grid;gap:12px;text-align:left;transition:opacity .5s ease,transform .6s ease}
 .p{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
-.scene.on .p,.scene.on .eb{opacity:1;transform:none}
+.scene.ppl .p,.scene.ppl .eb{opacity:1;transform:none}
 .p .face{display:block;width:62px;height:62px;object-fit:cover;border-radius:50%;box-shadow:0 5px 14px rgba(20,20,20,.14)}
 .scene.on .p .face{animation:drift 5s ease-in-out infinite alternate}
 .p .nm{font-weight:800;font-size:17px;line-height:1.1}
@@ -120,7 +120,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .lg.t img{height:44px}
 .lg.m{left:88%;top:24%}
 .lg.m img{height:22px}
-.scene.on .lg{opacity:1;transition-delay:0s,0s,1.8s}
+.scene.ppl .lg{opacity:1;transition-delay:0s,0s,1.2s}
 .scene.on .lg img{animation:drift 3.6s ease-in-out infinite alternate}
 .lg.m img{animation-delay:-1.8s!important}
 .scene.fuse2 .lg{left:50%;top:50%;opacity:0;transition-delay:0s,0s,.7s}
@@ -134,10 +134,6 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .story{width:min(100%,460px);margin-top:30px;text-align:center}
 .story h2{margin:0 0 4px;font-family:var(--sans);font-weight:800;font-size:clamp(28px,8vw,36px);line-height:1.05;letter-spacing:-.03em}
 .story .sub{display:inline-block;margin-top:10px;padding:6px 14px 8px;background:#006747;color:#fff;font-family:var(--sans);font-weight:800;font-size:clamp(24px,7vw,34px);line-height:1.05;letter-spacing:-.02em;box-shadow:4px 4px 0 var(--ink)}
-.more{display:inline-block;margin:6px 0 4px;padding:12px 16px;border:1.5px solid var(--ink);background:var(--card);color:var(--ink);text-decoration:none;font-size:15px;box-shadow:4px 4px 0 #006747}
-.more b{color:#006747}
-.more:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #006747}
-.more:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
 /* polaroids for the GTC photos */
 .duo{gap:14px;padding:16px 4px 4px}
 .fr{position:relative}
@@ -160,6 +156,16 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .js .blk.in .fr:nth-child(2){animation-delay:.25s}
 @keyframes drop{0%{transform:translateY(-18px) rotate(6deg);opacity:0}60%{opacity:1}100%{transform:none;opacity:1}}
 .big2{font-family:var(--sans);font-weight:800;font-size:clamp(24px,7vw,32px);line-height:1.1;letter-spacing:-.02em;color:#006747;margin-bottom:6px}
+.lp{display:block;margin:8px 0 6px;text-align:left;text-decoration:none;color:var(--ink);background:var(--card);border:1.5px solid var(--ink);box-shadow:5px 5px 0 #006747;overflow:hidden}
+.lp>img{display:block;width:100%;height:auto;aspect-ratio:1.91;object-fit:cover;object-position:50% 30%;border-bottom:1.5px solid var(--ink)}
+.lp-b{display:block;padding:12px 14px 14px}
+.lp-site{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.lp-t{display:block;margin-top:5px;font-weight:800;font-size:17px;line-height:1.2}
+.lp-d{display:-webkit-box;margin-top:5px;font-size:13px;line-height:1.4;color:#4a4640;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lp-cta{display:block;margin-top:10px;padding-top:10px;border-top:1px solid var(--rule);font-size:15px}
+.lp-cta b{color:#006747}
+.lp:active{transform:translate(2px,2px);box-shadow:3px 3px 0 #006747}
+.lp:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
 .blk{padding:22px 0 26px;border-bottom:1px solid var(--rule);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .blk:last-child{border-bottom:0}
 .story .ph img{max-height:none;width:100%}
@@ -170,6 +176,12 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .tag2 .ico{display:inline-block;width:1.25em;height:1.25em;vertical-align:-.24em}
 .tag2 .l1,.tag2 .l2{display:block;white-space:nowrap}
+.tag2{transition:opacity .25s ease}
+.scene.bigt .tag2{font-size:min(10vw,52px);line-height:1.22}
+.scene.bigt .tag2 .l1{white-space:normal}
+.scene.bigt .tag2 .l2a,.scene.bigt .tag2 .l2b{display:block;white-space:nowrap}
+.scene.bigt .box{display:none}
+.scene.swap .tag2{opacity:0}
 .tag2{margin-top:0;font-family:var(--display);font-size:min(20px,4.5vw);line-height:1.15;text-wrap:balance}
 .tag2 .ch{opacity:0;position:relative}
 .tag2 .ch.v{opacity:1}
@@ -199,15 +211,15 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
     <div class="wall" id="wall1"></div>
   </div>
   <div class="scene" id="s8">
-    <div class="tag2"><span class="l1">Subconscious is being run with</span><span class="l2">a <span class="h">Tulane Heart</span>&nbsp;<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#006747"/></svg>, and an <span class="m">MIT Mind</span>&nbsp;<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 1.6c-4.7 0-8.5 3.6-8.5 8.1 0 .9.1 1.7.4 2.5L3.2 15.6c-.3.5.1 1 .6 1H5.6v2.6c0 1.2 1 2.2 2.2 2.2h2v1.5h9.1v-5.3c1.8-1.6 3-3.9 3-6.5 0-4.9-3.9-9.5-8.5-9.5z" fill="#A31F34"/><g fill="#F8F7F4"><circle cx="11.4" cy="7.6" r="2.1"/><circle cx="14.3" cy="6.4" r="2.2"/><circle cx="17" cy="8.3" r="2"/><circle cx="16.4" cy="11.2" r="1.9"/><circle cx="13.6" cy="10.6" r="2.2"/><circle cx="10.6" cy="10.2" r="1.7"/><path d="M13.6 11.5h1.6l-.4 3.2h-.8z"/></g></svg></span></div>
+    <div class="tag2"><span class="l1">Subconscious is being run with</span><span class="l2"><span class="l2a">a <span class="h">Tulane Heart</span>&nbsp;<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#006747"/></svg>,</span><span class="l2b"> and an <span class="m">MIT Mind</span>&nbsp;<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 1.6c-4.7 0-8.5 3.6-8.5 8.1 0 .9.1 1.7.4 2.5L3.2 15.6c-.3.5.1 1 .6 1H5.6v2.6c0 1.2 1 2.2 2.2 2.2h2v1.5h9.1v-5.3c1.8-1.6 3-3.9 3-6.5 0-4.9-3.9-9.5-8.5-9.5z" fill="#A31F34"/><g fill="#F8F7F4"><circle cx="11.4" cy="7.6" r="2.1"/><circle cx="14.3" cy="6.4" r="2.2"/><circle cx="17" cy="8.3" r="2"/><circle cx="16.4" cy="11.2" r="1.9"/><circle cx="13.6" cy="10.6" r="2.2"/><circle cx="10.6" cy="10.2" r="1.7"/><path d="M13.6 11.5h1.6l-.4 3.2h-.8z"/></g></svg></span></span></div>
     <div class="box">
       <div class="team">
-        <div class="p me" style="transition-delay:1.4s">
+        <div class="p me" style="transition-delay:.3s">
           <img class="face" src="img/michael.webp" alt="">
           <div><div class="nm">Michael Weild</div><div class="rl">Founding GTM · Tulane</div></div>
         </div>
-        <div class="eb" style="transition-delay:1.9s">The tech geniuses behind Subconscious</div>
-        <div class="p f" style="transition-delay:2.2s">
+        <div class="eb" style="transition-delay:.7s">The tech geniuses behind Subconscious</div>
+        <div class="p f" style="transition-delay:1s">
           <img class="face" src="img/jack.webp" alt="">
           <div>
             <div class="nm">Jack O'Brien</div><div class="rl">CEO · Co-founder</div>
@@ -215,7 +227,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
             <div class="ex"><img src="img/mit.webp" alt="MIT"><img src="img/ibm.webp" alt="IBM"><img src="img/google.webp" alt="Google"><img src="img/sandhill.webp" alt="Sandhill"></div>
           </div>
         </div>
-        <div class="p f" style="transition-delay:2.6s">
+        <div class="p f" style="transition-delay:1.4s">
           <img class="face" src="img/hongyin.webp" alt="">
           <div>
             <div class="nm">Hongyin Luo</div><div class="rl">CTO · Co-founder</div>
@@ -273,7 +285,15 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
     <div class="say late" style="transition-delay:1.2s">I didn't know it at the time, but this is <b>NVIDIA GTC</b>, the conference Tulane sent me to. It's where I actually met the people at Subconscious, and they recruited me!</div>
     <div class="say late" style="transition-delay:1.8s">I run <b>market strategy</b> for Subconscious and help our engineers understand how to position the product.</div>
     </div>
-    <a class="more" href="https://sse.tulane.edu/tulane-nvidia-gtc-stepping-future-ai" target="_blank" rel="noopener">Curious about me? <b>Read More Here!</b> <span aria-hidden="true">&rarr;</span></a>
+    <a class="lp" href="https://sse.tulane.edu/tulane-nvidia-gtc-stepping-future-ai" target="_blank" rel="noopener">
+      <img src="img/article.webp" width="800" height="534" alt="">
+      <span class="lp-b">
+        <span class="lp-site">sse.tulane.edu · Tulane School of Science and Engineering</span>
+        <span class="lp-t">From Tulane to NVIDIA GTC: Stepping Into the Future of AI</span>
+        <span class="lp-d">Michael Weild, a member of Tulane’s Class of 2026, arrived at Tulane planning to study finance…</span>
+        <span class="lp-cta">Curious about me? <b>Read More Here!</b> <span aria-hidden="true">&rarr;</span></span>
+      </span>
+    </a>
   </section>
 
   <section class="raise" aria-label="Funding">
@@ -318,19 +338,21 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
   function typeHead(t0){chars.forEach(c=>c.classList.remove('v','cur'));
     chars.forEach((c,i)=>at(t0+i*28,()=>{if(i)chars[i-1].classList.remove('cur');c.classList.add('v','cur')}));
     at(t0+chars.length*28+900,()=>chars[chars.length-1].classList.remove('cur'))}
-  function end(){timers.forEach(clearTimeout);timers=[];SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2','fuse3'));stage.hidden=true;final.style.visibility='visible';final.classList.add('on');window.scrollTo(0,0);chars.forEach(c=>c.classList.add('v'))}
+  function end(){timers.forEach(clearTimeout);timers=[];SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2','fuse3','bigt','swap','ppl'));stage.hidden=true;final.style.visibility='visible';final.classList.add('on');window.scrollTo(0,0);chars.forEach(c=>c.classList.add('v'))}
   function play(){
     timers.forEach(clearTimeout);timers=[];
     final.classList.remove('on');final.style.visibility='hidden';stage.hidden=false;
-    SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2','fuse3'));
+    SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2','fuse3','bigt','swap','ppl'));
     at(80,()=>show('s1'));
     at(1700,()=>{show('s2');count()});
     at(5200,()=>show('s3'));
-    at(8600,()=>{show('s8');typeHead(300)});
-    at(14800,()=>$('s8').classList.add('fuse'));
-    at(15500,()=>$('s8').classList.add('fuse2'));
-    at(18100,()=>$('s8').classList.add('fuse3'));
-    at(20900,end);
+    at(8600,()=>{$('s8').classList.add('bigt');show('s8');typeHead(300)});
+    at(11100,()=>$('s8').classList.add('swap'));
+    at(11400,()=>{const e=$('s8');e.classList.remove('bigt','swap');e.classList.add('ppl')});
+    at(15700,()=>$('s8').classList.add('fuse'));
+    at(16400,()=>$('s8').classList.add('fuse2'));
+    at(19000,()=>$('s8').classList.add('fuse3'));
+    at(21800,end);
   }
   $('replay').addEventListener('click',play);
   $('copyPhone').addEventListener('click',async e=>{const b=e.currentTarget;
