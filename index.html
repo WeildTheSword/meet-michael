@@ -273,7 +273,23 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
   function count(){const el=$('num');const t0=performance.now(),D=1100;
     (function f(t){const p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);el.textContent='$'+(5.1*e).toFixed(1)+'M';if(p<1)requestAnimationFrame(f)})(t0)}
   function show(id){SCENES.forEach(s=>{const e=$(s);if(s===id){e.classList.remove('off');e.classList.add('on')}else if(e.classList.contains('on')){e.classList.remove('on');e.classList.add('off')}})}
-  function end(){timers.forEach(clearTimeout);timers=[];SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2','fuse3'));stage.hidden=true;final.style.visibility='visible';final.classList.add('on');window.scrollTo(0,0)}
+  // Fight song: fades in when Tulane appears, out when the card appears.
+  // Browsers block sound before the visitor touches the page, so if autoplay is refused,
+  // the first touch/click/key during the intro starts it instead.
+  const VOL=0.3,song=new Audio('audio/fight-song.mp3');song.preload='auto';
+  let ctx=null,gain=null,wantMusic=false;
+  function audioGraph(){if(ctx)return;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+    ctx=new AC();gain=ctx.createGain();gain.gain.value=0;ctx.createMediaElementSource(song).connect(gain).connect(ctx.destination)}
+  function ramp(to,secs){if(!gain){song.volume=to;return}const t=ctx.currentTime;gain.gain.cancelScheduledValues(t);gain.gain.setValueAtTime(gain.gain.value,t);gain.gain.linearRampToValueAtTime(to,t+secs)}
+  function startSong(){wantMusic=true;audioGraph();if(!gain)song.volume=0;
+    const go=()=>song.play().then(()=>ramp(VOL,2.5)).catch(()=>{});
+    if(ctx&&ctx.state!=='running')ctx.resume().then(go,()=>{});else go()}
+  function stopSong(){wantMusic=false;ramp(0,1.4);setTimeout(()=>{if(!wantMusic){song.pause();song.currentTime=0}},1500)}
+  function unlock(){audioGraph();if(ctx&&ctx.state!=='running')ctx.resume().catch(()=>{});
+    if(wantMusic&&song.paused)song.play().then(()=>ramp(VOL,2.5)).catch(()=>{});
+    else if(song.paused){if(!gain)song.volume=0;song.play().then(()=>{if(!wantMusic)song.pause()}).catch(()=>{})}}
+  ['pointerdown','touchstart','keydown'].forEach(ev=>addEventListener(ev,unlock,{passive:true}));
+  function end(){timers.forEach(clearTimeout);timers=[];SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2','fuse3'));stopSong();stage.hidden=true;final.style.visibility='visible';final.classList.add('on');window.scrollTo(0,0)}
   function play(){
     timers.forEach(clearTimeout);timers=[];
     final.classList.remove('on');final.style.visibility='hidden';stage.hidden=false;
@@ -281,10 +297,11 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
     at(80,()=>show('s1'));
     at(1700,()=>{show('s2');count()});
     at(5200,()=>show('s3'));
-    at(8600,()=>show('s8'));
+    at(8600,()=>{show('s8');startSong()});
     at(14100,()=>$('s8').classList.add('fuse'));
     at(15000,()=>$('s8').classList.add('fuse2'));
     at(18400,()=>$('s8').classList.add('fuse3'));
+    at(20200,()=>{if(wantMusic)ramp(0,1.4)});
     at(21400,end);
   }
   $('replay').addEventListener('click',play);
