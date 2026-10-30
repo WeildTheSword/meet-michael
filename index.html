@@ -9,7 +9,7 @@
 <title>Michael Weild · Subconscious</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,600&family=JetBrains+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,500;1,8..60,600&family=JetBrains+Mono:wght@500;600&family=Caveat:wght@600;700&display=swap">
 <style>
 /* Layout: a phone-first title sequence (mark, raise, logos) that settles into one contact card. Single committed light look in Subconscious brand colors. */
 :root{
@@ -138,6 +138,23 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .more b{color:#006747}
 .more:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #006747}
 .more:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+/* polaroids for the GTC photos */
+.duo{gap:14px;padding:16px 4px 4px}
+.fr{position:relative}
+.fr:nth-child(1){rotate:-3deg}
+.fr:nth-child(2){rotate:2.5deg;margin-top:12px}
+.pol{position:relative;background:#fff;padding:9px 9px 0;border-radius:2px;box-shadow:0 10px 22px rgba(20,20,20,.22),0 2px 5px rgba(20,20,20,.15)}
+.pol::before{content:"";position:absolute;left:50%;top:-11px;width:46%;height:22px;transform:translateX(-50%) rotate(-3deg);opacity:.9;background:repeating-linear-gradient(0deg,#e8a68f 0 3px,#f6d2c2 3px 6px);box-shadow:0 1px 2px rgba(0,0,0,.15);clip-path:polygon(2% 8%,98% 0,100% 92%,0 100%);z-index:2}
+.shot{position:relative}
+.story .duo .shot>img{display:block;width:100%;aspect-ratio:1;object-fit:cover;border:0;max-height:none;height:auto}
+.badge{position:absolute;top:8px;left:8px;display:flex;align-items:center;background:rgba(255,255,255,.95);padding:4px 7px;border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.story .duo .badge img{height:13px;width:auto;aspect-ratio:auto;max-height:none;border:0;display:block}
+.pol figcaption{margin:0;padding:8px 4px 10px;text-align:center;font-family:'Caveat',cursive;color:#2a2622;line-height:1}
+.pol figcaption b{display:block;font-weight:700;font-size:22px}
+.pol figcaption span{display:block;margin-top:2px;font-size:17px;color:var(--orange-ink)}
+.js .blk.in .fr{animation:drop 1.1s cubic-bezier(.3,1.3,.5,1) both}
+.js .blk.in .fr:nth-child(2){animation-delay:.25s}
+@keyframes drop{0%{transform:translateY(-18px) rotate(6deg);opacity:0}60%{opacity:1}100%{transform:none;opacity:1}}
 .blk{padding:22px 0 26px;border-bottom:1px solid var(--rule);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .blk:last-child{border-bottom:0}
 .story .ph img{max-height:none;width:100%}
@@ -152,7 +169,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .tag2 .h{color:#1E6B45;font-style:italic;font-weight:600}
 .tag2 .m{color:#A31F34;font-style:italic;font-weight:600}
 @media (max-width:380px){.wall{grid-template-columns:repeat(3,1fr)}.who h1{font-size:34px}}
-@media (prefers-reduced-motion:reduce){.p .face,.lg img{animation:none!important}.scene,.final,.wall img,.blk{transition:none}.merge .heart{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.fr{animation:none!important}.p .face,.lg img{animation:none!important}.scene,.final,.wall img,.blk{transition:none}.merge .heart{animation:none!important}}
 </style>
 
 </head><body>
@@ -240,8 +257,8 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
     </div>
     <div class="blk">
     <div class="duo">
-      <figure style="transition-delay:.2s"><img src="img/katti.webp" width="640" height="640" alt=""><figcaption><b>Sachin Katti</b><span>OpenAI</span></figcaption></figure>
-      <figure style="transition-delay:.8s"><img src="img/desouza.webp" width="640" height="640" alt=""><figcaption><b>Francis deSouza</b><span>CEO, Scale AI</span></figcaption></figure>
+      <figure class="fr" style="transition-delay:.2s"><div class="pol"><div class="shot"><img src="img/katti.webp" width="640" height="640" alt=""><span class="badge"><img src="img/openai.svg" alt="OpenAI"></span></div><figcaption><b>Sachin Katti</b><span>OpenAI</span></figcaption></div></figure>
+      <figure class="fr" style="transition-delay:.8s"><div class="pol"><div class="shot"><img src="img/desouza.webp" width="640" height="640" alt=""><span class="badge"><img src="img/scale.svg" alt="Scale AI"></span></div><figcaption><b>Francis deSouza</b><span>Scale AI CEO</span></figcaption></div></figure>
     </div>
     <div class="say late" style="transition-delay:1.2s">I didn't know it at the time, but this is <b>NVIDIA GTC</b>, the conference Tulane sent me to. It's where I actually met the people at Subconscious, and they recruited me!</div>
     <div class="say late" style="transition-delay:1.8s">I run <b>market strategy</b> for Subconscious and help our engineers understand how to position the product.</div>
