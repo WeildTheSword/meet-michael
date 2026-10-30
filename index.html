@@ -119,12 +119,28 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .scene.fuse .team{opacity:0;transform:scale(.96)}
 .scene.fuse .merge{opacity:1}
 .scene.fuse2 .merge>.t,.scene.fuse2 .merge>.m{transform:translate(-50%,-50%) scale(.7);opacity:0}
-.scene.fuse2 .merge .brand{opacity:1;transform:none}
+.merge .heart{position:absolute;top:50%;left:50%;width:84px;height:84px;margin:-42px 0 0 -42px;opacity:0;transform:scale(.3);transition:opacity .35s ease .55s,transform .5s cubic-bezier(.3,1.6,.5,1) .55s}
+.scene.fuse2 .merge .heart{opacity:1;transform:none;animation:beat 1.1s ease-in-out 1.15s 2}
+.scene.fuse3 .merge .heart{opacity:0;transform:scale(.6);transition:opacity .35s ease,transform .4s ease;animation:none}
+@keyframes beat{0%,100%{transform:scale(1)}20%{transform:scale(1.22)}40%{transform:scale(1)}60%{transform:scale(1.14)}}
+.scene.fuse3 .merge .brand{opacity:1;transform:none}
+.merge .brand{transition-delay:.25s}
+/* "Who is Michael Weild?" scroll section */
+.story{width:min(100%,460px);margin-top:30px;text-align:center}
+.story h2{margin:0 0 4px;font-family:var(--sans);font-weight:800;font-size:clamp(28px,8vw,36px);line-height:1.05;letter-spacing:-.03em}
+.blk{padding:22px 0 26px;border-bottom:1px solid var(--rule);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.blk:last-child{border-bottom:0}
+.story .ph img{max-height:none;width:100%}
+.story .late,.story .duo figure{opacity:1;transform:none}
+.story .duo img{max-height:none;height:auto}
+.js .blk:not(.in){opacity:0;transform:translateY(28px)}
+.js .blk.in .late{animation:rise .7s ease both .35s}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .tag2{margin-top:10px;font-family:var(--display);font-size:clamp(20px,5.6vw,26px);line-height:1.15;text-wrap:balance}
 .tag2 .h{color:#1E6B45;font-style:italic;font-weight:600}
 .tag2 .m{color:#A31F34;font-style:italic;font-weight:600}
 @media (max-width:380px){.wall{grid-template-columns:repeat(3,1fr)}.who h1{font-size:34px}}
-@media (prefers-reduced-motion:reduce){.scene,.final,.wall img{transition:none}}
+@media (prefers-reduced-motion:reduce){.scene,.final,.wall img,.blk{transition:none}.merge .heart{animation:none!important}}
 </style>
 
 </head><body>
@@ -143,24 +159,6 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
   <div class="scene" id="s3">
     <div class="eyebrow">Engineers from these companies use Subconscious</div>
     <div class="wall" id="wall1"></div>
-  </div>
-  <div class="scene" id="s4">
-    <div class="q">So where do I fall into this picture?</div>
-    <div class="say">I'm a Tulanian with a passion for technology. I was a course assistant for <b>Walter Isaacson</b>.</div>
-    <div class="ph"><img src="img/isaacson.webp" width="1000" height="769" alt=""></div>
-    <div class="cap late" style="transition-delay:1s">With Walter Isaacson and <b>Sir Tim Berners&#8209;Lee</b>, <em>inventor of the World Wide Web!!!</em></div>
-  </div>
-  <div class="scene" id="s6">
-    <div class="ph"><img src="img/stifel.webp" width="720" height="827" alt="" style="max-height:34vh"></div>
-    <div class="say">Until recently, I was an <b>AI Engineer at an investment bank</b>, our in-house expert on AI.</div>
-    <div class="say late" style="transition-delay:2.2s">I left because of an economic shift in how AI is being used, and joined <b>Subconscious</b> to execute on that vision with the smartest people to do it.</div>
-  </div>
-  <div class="scene" id="s7">
-    <div class="duo">
-      <figure style="transition-delay:.2s"><img src="img/katti.webp" width="640" height="640" alt=""><figcaption><b>Sachin Katti</b><span>OpenAI</span></figcaption></figure>
-      <figure style="transition-delay:.8s"><img src="img/desouza.webp" width="640" height="640" alt=""><figcaption><b>Francis deSouza</b><span>COO, Google Cloud Security</span></figcaption></figure>
-    </div>
-    <div class="say late" style="transition-delay:1.8s">I run <b>market strategy</b> for Subconscious and help our engineers understand how to position the product.</div>
   </div>
   <div class="scene" id="s8">
     <div class="q">Subconscious is a company leading the AI race.</div>
@@ -196,6 +194,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
       <div class="merge">
         <img class="t" src="img/tulane.webp" alt="">
         <img class="m" src="img/mit.webp" alt="">
+        <svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 2.9 5 6.4 5c2.1 0 3.5 1.2 4.4 2.6h2.4C14.1 6.2 15.5 5 17.6 5 21.1 5 23 8.6 21.6 11.8 19.5 16.4 12 21 12 21z" fill="#FF5C28"/></svg>
         <div class="brand"><img src="img/mark.svg" alt=""><span>Subconscious</span></div>
       </div>
     </div>
@@ -217,6 +216,28 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
       <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" fill="none" stroke="#FF5C28" stroke-width="2"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="none" stroke="#FF5C28" stroke-width="2" stroke-linecap="round"/></svg>
       <div><b>Save contact</b><small>Adds me to your phone's contacts</small></div>
     </a>
+  </section>
+
+  <section class="story" aria-labelledby="whoh">
+    <h2 id="whoh">Who is Michael Weild?</h2>
+    <div class="blk">
+    <div class="q">So where do I fall into this picture?</div>
+    <div class="say">I'm a Tulanian with a passion for technology. I was a course assistant for <b>Walter Isaacson</b>.</div>
+    <div class="ph"><img src="img/isaacson.webp" width="1000" height="769" alt=""></div>
+    <div class="cap late" style="transition-delay:1s">With Walter Isaacson and <b>Sir Tim Berners&#8209;Lee</b>, <em>inventor of the World Wide Web!!!</em></div>
+    </div>
+    <div class="blk">
+    <div class="ph"><img src="img/stifel.webp" width="720" height="827" alt=""></div>
+    <div class="say">Until recently, I was an <b>AI Engineer at an investment bank</b>, our in-house expert on AI.</div>
+    <div class="say late" style="transition-delay:2.2s">I left because of an economic shift in how AI is being used, and joined <b>Subconscious</b> to execute on that vision with the smartest people to do it.</div>
+    </div>
+    <div class="blk">
+    <div class="duo">
+      <figure style="transition-delay:.2s"><img src="img/katti.webp" width="640" height="640" alt=""><figcaption><b>Sachin Katti</b><span>OpenAI</span></figcaption></figure>
+      <figure style="transition-delay:.8s"><img src="img/desouza.webp" width="640" height="640" alt=""><figcaption><b>Francis deSouza</b><span>COO, Google Cloud Security</span></figcaption></figure>
+    </div>
+    <div class="say late" style="transition-delay:1.8s">I run <b>market strategy</b> for Subconscious and help our engineers understand how to position the product.</div>
+    </div>
   </section>
 
   <section class="raise" aria-label="Funding">
@@ -246,27 +267,25 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 
   const $=id=>document.getElementById(id);
   const stage=$('stage'),final=$('final');
-  const SCENES=['s1','s2','s3','s4','s6','s7','s8'];
+  const SCENES=['s1','s2','s3','s8'];
   let timers=[];
   const at=(ms,fn)=>timers.push(setTimeout(fn,ms));
   function count(){const el=$('num');const t0=performance.now(),D=1100;
     (function f(t){const p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);el.textContent='$'+(5.1*e).toFixed(1)+'M';if(p<1)requestAnimationFrame(f)})(t0)}
   function show(id){SCENES.forEach(s=>{const e=$(s);if(s===id){e.classList.remove('off');e.classList.add('on')}else if(e.classList.contains('on')){e.classList.remove('on');e.classList.add('off')}})}
-  function end(){timers.forEach(clearTimeout);timers=[];SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2'));stage.hidden=true;final.style.visibility='visible';final.classList.add('on');window.scrollTo(0,0)}
+  function end(){timers.forEach(clearTimeout);timers=[];SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2','fuse3'));stage.hidden=true;final.style.visibility='visible';final.classList.add('on');window.scrollTo(0,0)}
   function play(){
     timers.forEach(clearTimeout);timers=[];
     final.classList.remove('on');final.style.visibility='hidden';stage.hidden=false;
-    SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2'));
+    SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2','fuse3'));
     at(80,()=>show('s1'));
     at(1700,()=>{show('s2');count()});
     at(5200,()=>show('s3'));
-    at(8600,()=>show('s4'));
-    at(14600,()=>show('s6'));
-    at(22200,()=>show('s7'));
-    at(28700,()=>show('s8'));
-    at(34200,()=>$('s8').classList.add('fuse'));
-    at(35100,()=>$('s8').classList.add('fuse2'));
-    at(38300,end);
+    at(8600,()=>show('s8'));
+    at(14100,()=>$('s8').classList.add('fuse'));
+    at(15000,()=>$('s8').classList.add('fuse2'));
+    at(18400,()=>$('s8').classList.add('fuse3'));
+    at(21400,end);
   }
   $('replay').addEventListener('click',play);
   $('copyPhone').addEventListener('click',async e=>{const b=e.currentTarget;
@@ -274,6 +293,11 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
     catch(_){const r=document.createRange();r.selectNodeContents($('phone'));const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'}
     setTimeout(()=>b.textContent='Copy',1800)});
   const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce&&'IntersectionObserver' in window){
+    document.documentElement.classList.add('js');
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.18,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.blk').forEach(b=>io.observe(b));
+  }
   if(reduce){end()}else{play()}
 })();
 </script>
