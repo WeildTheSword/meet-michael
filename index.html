@@ -106,6 +106,8 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .p .ex img{height:15px;width:auto}
 .me{align-items:center}
 .me .face{width:54px;height:54px;object-position:50% 10%;background:var(--orange)}
+.eb .sg{display:block;font-family:var(--sans);font-weight:800;font-size:clamp(20px,5.6vw,26px);letter-spacing:-.01em;line-height:1.05;color:#A31F34;text-transform:none}
+.eb .sgs{display:block;margin-top:3px}
 .eb{margin-top:4px;padding-top:12px;padding-right:66px;border-top:1.5px solid var(--ink);font-family:var(--mono);font-weight:600;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#A31F34;opacity:0;transition:opacity .5s ease}
 .p.f:nth-of-type(4) .face{animation-delay:-2.5s!important}
 @keyframes drift{from{transform:translateY(-2px)}to{transform:translateY(3px)}}
@@ -223,7 +225,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
           <img class="face" src="img/michael.webp" alt="">
           <div><div class="nm">Michael Weild</div><div class="rl">Founding GTM · Tulane</div></div>
         </div>
-        <div class="eb" style="transition-delay:.7s">The genius engineers behind the product</div>
+        <div class="eb" style="transition-delay:.7s"><span class="sg">MIT SUPERGENIUSES!</span><span class="sgs">The genius engineers behind the product</span></div>
         <div class="p f" style="transition-delay:1s">
           <img class="face" src="img/jack.webp" alt="">
           <div>
@@ -362,12 +364,12 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
     at(1700,()=>{show('s2');count()});
     at(5200,()=>show('s3'));
     at(8600,()=>{$('s8').classList.add('bigt');show('s8');typeHead(300)});
-    at(11800,()=>$('s8').classList.add('swap'));
-    at(12050,()=>{const e=$('s8');e.classList.remove('bigt','swap');e.classList.add('ppl');placeLogos()});
-    at(16100,()=>$('s8').classList.add('fuse'));
-    at(16800,()=>$('s8').classList.add('fuse2'));
-    at(19400,()=>$('s8').classList.add('fuse3'));
-    at(22200,end);
+    at(14300,()=>$('s8').classList.add('swap'));
+    at(14550,()=>{const e=$('s8');e.classList.remove('bigt','swap');e.classList.add('ppl');placeLogos()});
+    at(18800,()=>$('s8').classList.add('fuse'));
+    at(19500,()=>$('s8').classList.add('fuse2'));
+    at(22100,()=>$('s8').classList.add('fuse3'));
+    at(24900,end);
   }
   $('replay').addEventListener('click',play);
   $('copyPhone').addEventListener('click',async e=>{const b=e.currentTarget;
