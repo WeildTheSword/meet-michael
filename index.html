@@ -103,6 +103,8 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .me{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}
 .me .face{width:76px;height:76px;object-position:50% 10%;background:var(--orange)}
 .eb{padding-top:12px;border-top:1.5px solid var(--ink);opacity:0;transform:translateX(-14px);transition:opacity .5s ease var(--d,0s),transform .6s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.eb .mi{display:inline-block;width:1.05em;height:1.05em;vertical-align:-.14em;animation:think 1.5s ease-in-out infinite}
+@keyframes think{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
 .eb .sg{display:block;font-family:var(--sans);font-weight:800;font-size:clamp(24px,7vw,32px);letter-spacing:-.02em;line-height:1;color:#A31F34}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center}
 .pair .face{width:96px;height:96px;margin:0 auto 10px}
@@ -193,9 +195,13 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .scene.swap .tag2{opacity:0}
 .scene.ppl .tag2,.scene.fuse .tag2{display:none}
 .tag2{margin-top:0;font-family:var(--display);font-size:min(20px,4.5vw);line-height:1.15;text-wrap:balance}
-.tag2 .ch{opacity:0;position:relative}
-.tag2 .ch.v{opacity:1}
-.tag2 span.ch.cur::after{content:"";position:absolute;right:-2px;top:.12em;width:2px;height:1em;background:var(--orange);animation:blink .55s steps(1) infinite}
+.fin{font-family:var(--display);font-weight:500;font-size:min(9vw,44px);line-height:1.2;letter-spacing:-.01em;text-wrap:balance}
+.fin .fl{display:block}
+.fin .fl+.fl{margin-top:.35em;font-style:italic;color:var(--orange-ink)}
+.fin .tu{font-weight:800;font-style:italic;color:#006747}
+.tag2 .ch,.fin .ch{opacity:0;position:relative}
+.tag2 .ch.v,.fin .ch.v{opacity:1}
+.tag2 span.ch.cur::after,.fin span.ch.cur::after{content:"";position:absolute;right:-2px;top:.12em;width:2px;height:1em;background:var(--orange);animation:blink .55s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .tag2 .h{color:#1E6B45;font-style:italic;font-weight:800}
 .tag2 .m{color:#A31F34;font-style:italic;font-weight:800}
@@ -228,7 +234,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
           <img class="face" src="img/michael.webp" alt="">
           <div><div class="nm">Michael Weild</div><div class="rl">Founding GTM · Tulane</div></div>
         </div>
-        <div class="eb" style="--d:.7s"><span class="sg">MIT SUPERGENIUSES!</span></div>
+        <div class="eb" style="--d:.7s"><span class="sg">The MIT Minds <svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 1.6c-4.7 0-8.5 3.6-8.5 8.1 0 .9.1 1.7.4 2.5L3.2 15.6c-.3.5.1 1 .6 1H5.6v2.6c0 1.2 1 2.2 2.2 2.2h2v1.5h9.1v-5.3c1.8-1.6 3-3.9 3-6.5 0-4.9-3.9-9.5-8.5-9.5z" fill="#A31F34"/><g fill="#F8F7F4"><circle cx="11.4" cy="7.6" r="2.1"/><circle cx="14.3" cy="6.4" r="2.2"/><circle cx="17" cy="8.3" r="2"/><circle cx="16.4" cy="11.2" r="1.9"/><circle cx="13.6" cy="10.6" r="2.2"/><circle cx="10.6" cy="10.2" r="1.7"/><path d="M13.6 11.5h1.6l-.4 3.2h-.8z"/></g></svg></span></div>
         <div class="pair">
           <div class="p f" style="--d:1s">
             <img class="face" src="img/jack.webp" alt="">
@@ -249,6 +255,9 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
         <div class="brand"><img src="img/mark.svg" alt=""><span>Subconscious</span></div>
       </div>
     </div>
+  </div>
+  <div class="scene" id="s9">
+    <div class="fin"><span class="fl"><b class="tu">Tulane</b> is now in the AI race.</span><span class="fl">And we're planning on staying.</span></div>
   </div>
 </div>
 
@@ -335,21 +344,22 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 
   const $=id=>document.getElementById(id);
   const stage=$('stage'),final=$('final');
-  const SCENES=['s1','s2','s3','s8'];
+  const SCENES=['s1','s2','s3','s8','s9'];
   let timers=[];
   const at=(ms,fn)=>timers.push(setTimeout(fn,ms));
   function count(){const el=$('num');const t0=performance.now(),D=1100;
     (function f(t){const p=Math.min(1,(t-t0)/D),e=1-Math.pow(1-p,3);el.textContent='$'+(5.1*e).toFixed(1)+'M';if(p<1)requestAnimationFrame(f)})(t0)}
   function show(id){SCENES.forEach(s=>{const e=$(s);if(s===id){e.classList.remove('off');e.classList.add('on')}else if(e.classList.contains('on')){e.classList.remove('on');e.classList.add('off')}})}
   // Headline types itself in: every character (and icon) is pre-laid out, then revealed in order.
-  const head=document.querySelector('#s8 .tag2'),chars=[];
-  (function split(n){[...n.childNodes].forEach(c=>{
-    if(c.nodeType===3){const f=document.createDocumentFragment();[...c.textContent].forEach(t=>{const sp=document.createElement('span');sp.className='ch';sp.textContent=t;f.appendChild(sp);chars.push(sp)});c.replaceWith(f)}
-    else if(c.nodeName.toLowerCase()==='svg'){c.classList.add('ch');chars.push(c)}
-    else split(c)})})(head);
-  function typeHead(t0){chars.forEach(c=>c.classList.remove('v','cur'));
-    chars.forEach((c,i)=>at(t0+i*37,()=>{if(i)chars[i-1].classList.remove('cur');c.classList.add('v','cur')}));
-    at(t0+chars.length*37+900,()=>chars[chars.length-1].classList.remove('cur'))}
+  function typer(el){const cs=[];(function split(n){[...n.childNodes].forEach(c=>{
+    if(c.nodeType===3){const f=document.createDocumentFragment();[...c.textContent].forEach(t=>{const sp=document.createElement('span');sp.className='ch';sp.textContent=t;f.appendChild(sp);cs.push(sp)});c.replaceWith(f)}
+    else if(c.nodeName.toLowerCase()==='svg'){c.classList.add('ch');cs.push(c)}
+    else split(c)})})(el);return cs}
+  const chars=typer(document.querySelector('#s8 .tag2')),fchars=typer(document.querySelector('#s9 .fin'));
+  function typeRun(cs,t0){cs.forEach(c=>c.classList.remove('v','cur'));
+    cs.forEach((c,i)=>at(t0+i*37,()=>{if(i)cs[i-1].classList.remove('cur');c.classList.add('v','cur')}));
+    at(t0+cs.length*37+900,()=>cs[cs.length-1].classList.remove('cur'))}
+  const typeHead=t0=>typeRun(chars,t0);
   // Float the Tulane shield beside Michael's row and the MIT logo beside the "genius engineers" line.
   function placeLogos(){const me=document.querySelector('#s8 .me'),eb=document.querySelector('#s8 .eb');
     document.querySelector('#s8 .lg.t').style.setProperty('--y',(me.offsetTop+me.offsetHeight/2)+'px');
@@ -368,7 +378,8 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
     at(18800,()=>$('s8').classList.add('fuse'));
     at(19500,()=>$('s8').classList.add('fuse2'));
     at(22100,()=>$('s8').classList.add('fuse3'));
-    at(24900,end);
+    at(23900,()=>{show('s9');typeRun(fchars,300)});
+    at(23900+300+fchars.length*37+3000,end);
   }
   $('replay').addEventListener('click',play);
   $('copyPhone').addEventListener('click',async e=>{const b=e.currentTarget;
