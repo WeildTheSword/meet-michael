@@ -119,9 +119,6 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 @keyframes fadein{from{opacity:0}to{opacity:1}}
 @keyframes drift{from{transform:translateY(-3px)}to{transform:translateY(4px)}}
 .box{position:relative}
-.merge .brand{position:absolute;inset:0;justify-content:center;opacity:0;transform:scale(.85);transition:opacity .5s ease .75s,transform .6s cubic-bezier(.2,.7,.2,1) .75s}
-.merge .brand span{font-size:clamp(30px,8.6vw,44px)}
-.scene.fuse .team{opacity:0;transform:scale(.96)}
 .merge{position:absolute;inset:0;pointer-events:none}
 .lg{position:absolute;transform:translate(-50%,-50%);opacity:0;transition:left 1s cubic-bezier(.5,0,.2,1),top 1s cubic-bezier(.5,0,.2,1),opacity .4s ease}
 .lg img{display:block;width:auto}
@@ -132,13 +129,6 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .scene.ppl .lg{opacity:1;transition-delay:0s,0s,1.2s}
 .scene.on .lg img{animation:drift 3.6s ease-in-out infinite alternate}
 .lg.m img{animation-delay:-1.8s!important}
-.scene.fuse2 .lg{left:50%;top:50%;opacity:0;transition-delay:0s,0s,.7s}
-.merge .heart{position:absolute;top:50%;left:50%;width:110px;height:110px;margin:-55px 0 0 -55px;opacity:0;transform:scale(.3);transition:opacity .35s ease .55s,transform .5s cubic-bezier(.3,1.6,.5,1) .55s}
-.scene.fuse2 .merge .heart{opacity:1;transform:none;animation:beat .8s ease-in-out .9s 2}
-.scene.fuse3 .merge .heart{opacity:0;transform:scale(.6);transition:opacity .35s ease,transform .4s ease;animation:none}
-@keyframes beat{0%,100%{transform:scale(1)}20%{transform:scale(1.22)}40%{transform:scale(1)}60%{transform:scale(1.14)}}
-.scene.fuse3 .merge .brand{opacity:1;transform:none}
-.merge .brand{transition-delay:.25s}
 /* "Who is Michael Weild?" scroll section */
 .story{width:min(100%,460px);margin-top:30px;text-align:center}
 .story h2{margin:0 0 4px;font-family:var(--sans);font-weight:800;font-size:clamp(28px,8vw,36px);line-height:1.05;letter-spacing:-.03em}
@@ -196,10 +186,14 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .scene.bigt .tag2 .l2a,.scene.bigt .tag2 .l2b{display:block;white-space:nowrap}
 .scene.bigt .box{display:none}
 .scene.swap .tag2{opacity:0}
-.scene.ppl .tag2,.scene.fuse .tag2{display:none}
+.scene.ppl .tag2{display:none}
 .tag2{margin-top:0;font-family:var(--display);font-size:min(20px,4.5vw);line-height:1.15;text-wrap:balance}
 .fin{font-family:var(--display);font-weight:500;font-size:min(9vw,44px);line-height:1.2;letter-spacing:-.01em;text-wrap:balance}
 .fin .fl{display:block}
+.finlogo{margin-top:28px;opacity:0;transform:translateY(10px) scale(.95);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.scene.logo .finlogo{opacity:1;transform:none}
+.finlogo img{width:40px;height:38px}
+.finlogo span{font-size:clamp(26px,7.6vw,38px)}
 .fin .fl+.fl{margin-top:.35em;font-style:italic;color:var(--orange-ink)}
 .fin .tu{font-weight:800;font-style:italic;color:#006747}
 .tag2 .ch,.fin .ch{opacity:0;position:relative}
@@ -209,7 +203,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .tag2 .h{color:#1E6B45;font-style:italic;font-weight:800}
 .tag2 .m{color:#A31F34;font-style:italic;font-weight:800}
 @media (max-width:380px){.wall{grid-template-columns:repeat(3,1fr)}.who h1{font-size:34px}}
-@media (prefers-reduced-motion:reduce){.nudge img{animation:none}.fr{animation:none!important}.p .face,.lg img{animation:none!important}.scene,.final,.wall img,.blk{transition:none}.merge .heart{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.nudge img{animation:none}.fr{animation:none!important}.p .face,.lg img{animation:none!important}.scene,.final,.wall img,.blk{transition:none}}
 </style>
 
 </head><body>
@@ -254,13 +248,12 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
       <div class="merge">
         <span class="lg t"><img src="img/tulane.webp" alt="Tulane University"></span>
         <span class="lg m"><img src="img/mit.webp" alt="MIT"></span>
-        <svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#006747"/></svg>
-        <div class="brand"><img src="img/mark.svg" alt=""><span>Subconscious</span></div>
       </div>
     </div>
   </div>
   <div class="scene" id="s9">
     <div class="fin"><span class="fl"><b class="tu">Tulane</b> is now in the AI race.</span><span class="fl">And we're planning on staying.</span></div>
+    <div class="brand finlogo"><img src="img/mark.svg" alt=""><span>Subconscious</span></div>
   </div>
 </div>
 
@@ -367,22 +360,20 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
   function placeLogos(){const me=document.querySelector('#s8 .me'),eb=document.querySelector('#s8 .eb');
     document.querySelector('#s8 .lg.t').style.setProperty('--y',(me.offsetTop+me.offsetHeight/2)+'px');
     const sg=eb.querySelector('.sg');document.querySelector('#s8 .lg.m').style.setProperty('--y',(sg.offsetTop+sg.offsetHeight/2)+'px')}
-  function end(){timers.forEach(clearTimeout);timers=[];SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2','fuse3','bigt','swap','ppl'));stage.hidden=true;final.style.visibility='visible';final.classList.add('on');window.scrollTo(0,0);chars.forEach(c=>c.classList.add('v'))}
+  function end(){timers.forEach(clearTimeout);timers=[];SCENES.forEach(s=>$(s).classList.remove('on','off','bigt','swap','ppl','logo'));stage.hidden=true;final.style.visibility='visible';final.classList.add('on');window.scrollTo(0,0);chars.forEach(c=>c.classList.add('v'))}
   function play(){
     timers.forEach(clearTimeout);timers=[];
     final.classList.remove('on');final.style.visibility='hidden';stage.hidden=false;
-    SCENES.forEach(s=>$(s).classList.remove('on','off','fuse','fuse2','fuse3','bigt','swap','ppl'));
+    SCENES.forEach(s=>$(s).classList.remove('on','off','bigt','swap','ppl','logo'));
     at(80,()=>show('s1'));
     at(1700,()=>{show('s2');count()});
     at(5200,()=>show('s3'));
     at(8600,()=>{$('s8').classList.add('bigt');show('s8');typeHead(300)});
     at(14300,()=>$('s8').classList.add('swap'));
     at(14550,()=>{const e=$('s8');e.classList.remove('bigt','swap');e.classList.add('ppl');placeLogos()});
-    at(18800,()=>$('s8').classList.add('fuse'));
-    at(19500,()=>$('s8').classList.add('fuse2'));
-    at(22100,()=>$('s8').classList.add('fuse3'));
-    at(23900,()=>{show('s9');typeRun(fchars,300)});
-    at(23900+300+fchars.length*37+3000,end);
+    at(18800,()=>{show('s9');typeRun(fchars,300)});
+    at(18800+300+fchars.length*37+200,()=>$('s9').classList.add('logo'));
+    at(18800+300+fchars.length*37+3200,end);
   }
   $('replay').addEventListener('click',play);
   $('copyPhone').addEventListener('click',async e=>{const b=e.currentTarget;
