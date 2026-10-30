@@ -139,7 +139,9 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .js .blk:not(.in){opacity:0;transform:translateY(28px)}
 .js .blk.in .late{animation:rise .7s ease both .35s}
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.tag2{margin-top:10px;font-family:var(--display);font-size:clamp(20px,5.6vw,26px);line-height:1.15;text-wrap:balance}
+.tag2 .ico{display:inline-block;width:1.25em;height:1.25em;vertical-align:-.24em}
+.tag2 .nw{white-space:nowrap}
+.tag2{margin-top:0;font-family:var(--display);font-size:clamp(24px,6.8vw,32px);line-height:1.15;text-wrap:balance}
 .tag2 .h{color:#1E6B45;font-style:italic;font-weight:600}
 .tag2 .m{color:#A31F34;font-style:italic;font-weight:600}
 @media (max-width:380px){.wall{grid-template-columns:repeat(3,1fr)}.who h1{font-size:34px}}
@@ -164,8 +166,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
     <div class="wall" id="wall1"></div>
   </div>
   <div class="scene" id="s8">
-    <div class="q">Subconscious is a company leading the AI race.</div>
-    <div class="tag2">With a <span class="h">Tulane heart</span>, and an <span class="m">MIT mind</span>.</div>
+    <div class="tag2">Subconscious is being run with a <span class="nw"><span class="h">Tulane Heart</span>&nbsp;<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#006747"/></svg></span>, and an <span class="nw"><span class="m">MIT Mind</span>&nbsp;<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 1.6c-4.7 0-8.5 3.6-8.5 8.1 0 .9.1 1.7.4 2.5L3.2 15.6c-.3.5.1 1 .6 1H5.6v2.6c0 1.2 1 2.2 2.2 2.2h2v1.5h9.1v-5.3c1.8-1.6 3-3.9 3-6.5 0-4.9-3.9-9.5-8.5-9.5z" fill="#A31F34"/><g fill="#F8F7F4"><circle cx="11.4" cy="7.6" r="2.1"/><circle cx="14.3" cy="6.4" r="2.2"/><circle cx="17" cy="8.3" r="2"/><circle cx="16.4" cy="11.2" r="1.9"/><circle cx="13.6" cy="10.6" r="2.2"/><circle cx="10.6" cy="10.2" r="1.7"/><path d="M13.6 11.5h1.6l-.4 3.2h-.8z"/></g></svg></span></div>
     <div class="box">
       <div class="team">
         <div class="p me" style="transition-delay:.4s">
