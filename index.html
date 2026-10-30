@@ -38,7 +38,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .investors b{color:var(--ink);font-weight:700}
 /* scene 3 */
 .wall{margin-top:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px 14px;align-items:center;justify-items:center}
-.wall img{max-width:100%;height:auto;opacity:0;transform:scale(.9);transition:opacity .45s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
+.wall img{max-width:100%;height:auto;opacity:0;transform:scale(.9);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
 .scene.on .wall img{opacity:1;transform:none}
 /* final card */
 .final{min-height:100%;display:flex;flex-direction:column;align-items:center;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 40px;opacity:0;transition:opacity .7s ease}
@@ -113,7 +113,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .pair .nm{font-size:20px}
 .p .ex{margin-top:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 10px;align-items:center}
 .p .ex img{height:16px;width:auto;opacity:0}
-.scene.ppl .p .ex img{animation:fadein .6s ease calc(var(--d,0s) + .5s + var(--i)*.08s) both}
+.scene.ppl .p .ex img{animation:fadein .6s ease calc(var(--d,0s) + .7s + var(--i)*.18s) both}
 .pair .p:nth-child(2) .face{animation-duration:.75s,3.9s}
 @keyframes rise{from{opacity:0;transform:translateY(10px) scale(.94)}to{opacity:1;transform:none}}
 @keyframes fadein{from{opacity:0}to{opacity:1}}
@@ -227,18 +227,18 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
     <div class="tag2"><span class="l1">Subconscious is being run with</span><span class="l2"><span class="l2a">a <span class="h">Tulane Heart</span>&nbsp;<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#006747"/></svg>,</span><span class="l2b"> and an <span class="m">MIT Mind</span>&nbsp;<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 1.6c-4.7 0-8.5 3.6-8.5 8.1 0 .9.1 1.7.4 2.5L3.2 15.6c-.3.5.1 1 .6 1H5.6v2.6c0 1.2 1 2.2 2.2 2.2h2v1.5h9.1v-5.3c1.8-1.6 3-3.9 3-6.5 0-4.9-3.9-9.5-8.5-9.5z" fill="#A31F34"/><g fill="#F8F7F4"><circle cx="11.4" cy="7.6" r="2.1"/><circle cx="14.3" cy="6.4" r="2.2"/><circle cx="17" cy="8.3" r="2"/><circle cx="16.4" cy="11.2" r="1.9"/><circle cx="13.6" cy="10.6" r="2.2"/><circle cx="10.6" cy="10.2" r="1.7"/><path d="M13.6 11.5h1.6l-.4 3.2h-.8z"/></g></svg></span></span></div>
     <div class="box">
       <div class="team">
-        <div class="p me" style="--d:.2s">
+        <div class="p me" style="--d:.3s">
           <img class="face" src="img/michael.webp" alt="">
           <div><div class="nm">Michael Weild</div><div class="role">Running market strategy</div></div>
         </div>
-        <div class="eb" style="--d:.7s"><span class="sg">The MIT Minds <svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 1.6c-4.7 0-8.5 3.6-8.5 8.1 0 .9.1 1.7.4 2.5L3.2 15.6c-.3.5.1 1 .6 1H5.6v2.6c0 1.2 1 2.2 2.2 2.2h2v1.5h9.1v-5.3c1.8-1.6 3-3.9 3-6.5 0-4.9-3.9-9.5-8.5-9.5z" fill="#A31F34"/><g fill="#F8F7F4"><circle cx="11.4" cy="7.6" r="2.1"/><circle cx="14.3" cy="6.4" r="2.2"/><circle cx="17" cy="8.3" r="2"/><circle cx="16.4" cy="11.2" r="1.9"/><circle cx="13.6" cy="10.6" r="2.2"/><circle cx="10.6" cy="10.2" r="1.7"/><path d="M13.6 11.5h1.6l-.4 3.2h-.8z"/></g></svg></span><span class="role">Technical Development &amp; Investment</span></div>
+        <div class="eb" style="--d:1.1s"><span class="sg">The MIT Minds <svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 1.6c-4.7 0-8.5 3.6-8.5 8.1 0 .9.1 1.7.4 2.5L3.2 15.6c-.3.5.1 1 .6 1H5.6v2.6c0 1.2 1 2.2 2.2 2.2h2v1.5h9.1v-5.3c1.8-1.6 3-3.9 3-6.5 0-4.9-3.9-9.5-8.5-9.5z" fill="#A31F34"/><g fill="#F8F7F4"><circle cx="11.4" cy="7.6" r="2.1"/><circle cx="14.3" cy="6.4" r="2.2"/><circle cx="17" cy="8.3" r="2"/><circle cx="16.4" cy="11.2" r="1.9"/><circle cx="13.6" cy="10.6" r="2.2"/><circle cx="10.6" cy="10.2" r="1.7"/><path d="M13.6 11.5h1.6l-.4 3.2h-.8z"/></g></svg></span><span class="role">Technical Development &amp; Investment</span></div>
         <div class="pair">
-          <div class="p f" style="--d:1s">
+          <div class="p f" style="--d:1.8s">
             <img class="face" src="img/jack.webp" alt="">
             <div class="nm">Jack O'Brien</div><div class="rl">CEO · Co-founder</div>
             <div class="ex"><img src="img/mit.webp" alt="MIT" style="--i:0"><img src="img/ibm.webp" alt="IBM" style="--i:1"><img src="img/google.webp" alt="Google" style="--i:2"><img src="img/sandhill.webp" alt="Sandhill" style="--i:3"></div>
           </div>
-          <div class="p f" style="--d:1.35s">
+          <div class="p f" style="--d:2.4s">
             <img class="face" src="img/hongyin.webp" alt="">
             <div class="nm">Hongyin Luo</div><div class="rl">CTO · Co-founder</div>
             <div class="ex"><img src="img/csail.webp" alt="MIT CSAIL" style="--i:0"><img src="img/tsinghua.webp" alt="Tsinghua University" style="--i:1"><img src="img/aws.webp" alt="AWS" style="--i:2"><img src="img/googleai.webp" alt="Google AI" style="--i:3"></div>
@@ -333,7 +333,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
   function fill(el,area,stagger){
     LOGOS.forEach(([n,w,h],i)=>{const a=w/h;let hh=Math.min(Math.sqrt(area/a),38);let ww=hh*a;if(ww>96){ww=96;hh=ww/a}
       const im=new Image();im.src='img/'+n+'.webp';im.alt=NAMES[n];im.width=Math.round(ww);im.height=Math.round(hh);
-      if(stagger)im.style.transitionDelay=(i*70)+'ms';el.appendChild(im)});
+      if(stagger)im.style.transitionDelay=(250+i*150)+'ms';el.appendChild(im)});
   }
   fill(document.getElementById('wall1'),1500,true);
   fill(document.getElementById('wall2'),1150,false);
@@ -368,12 +368,13 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
     at(80,()=>show('s1'));
     at(1700,()=>{show('s2');count()});
     at(5200,()=>show('s3'));
-    at(8600,()=>{$('s8').classList.add('bigt');show('s8');typeHead(300)});
-    at(14300,()=>$('s8').classList.add('swap'));
-    at(14550,()=>{const e=$('s8');e.classList.remove('bigt','swap');e.classList.add('ppl');placeLogos()});
-    at(18800,()=>{show('s9');typeRun(fchars,300)});
-    at(18800+300+fchars.length*37+200,()=>$('s9').classList.add('logo'));
-    at(18800+300+fchars.length*37+3200,end);
+    const T8=11800,T9=T8+5950+9000;          // logo wall gets 6.6s; founders hold ~9s
+    at(T8,()=>{$('s8').classList.add('bigt');show('s8');typeHead(300)});
+    at(T8+5700,()=>$('s8').classList.add('swap'));
+    at(T8+5950,()=>{const e=$('s8');e.classList.remove('bigt','swap');e.classList.add('ppl');placeLogos()});
+    at(T9,()=>{show('s9');typeRun(fchars,300)});
+    at(T9+300+fchars.length*37+200,()=>$('s9').classList.add('logo'));
+    at(T9+300+fchars.length*37+3200,end);
   }
   $('replay').addEventListener('click',play);
   $('copyPhone').addEventListener('click',async e=>{const b=e.currentTarget;
