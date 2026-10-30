@@ -93,24 +93,26 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .late{opacity:0;transition:opacity .5s ease}
 .scene.on .late{opacity:1}
 /* founders: people first, then Tulane + MIT merge into the mark */
-.team{margin-top:14px;display:grid;gap:12px;text-align:left;transition:opacity .5s ease,transform .6s ease}
-.p{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.team{margin-top:6px;display:grid;gap:14px;text-align:left;transition:opacity .5s ease,transform .6s ease}
+.p{opacity:0;transform:translateY(16px);transition:opacity .6s ease var(--d,0s),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
 .scene.ppl .p,.scene.ppl .eb{opacity:1;transform:none}
-.p .face{display:block;width:62px;height:62px;object-fit:cover;border-radius:50%;box-shadow:0 5px 14px rgba(20,20,20,.14)}
-.scene.on .p .face{animation:drift 5s ease-in-out infinite alternate}
-.p .nm{font-weight:800;font-size:17px;line-height:1.1}
-.p .rl{margin-top:2px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-ink)}
-.p .cr{margin-top:5px;font-size:12.5px;line-height:1.35;color:#3d3a35}
-.p .cr b{color:var(--ink)}
-.p .ex{margin-top:7px;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
-.p .ex img{height:15px;width:auto}
-.me{align-items:center}
-.me .face{width:54px;height:54px;object-position:50% 10%;background:var(--orange)}
-.eb .sg{display:block;font-family:var(--sans);font-weight:800;font-size:clamp(20px,5.6vw,26px);letter-spacing:-.01em;line-height:1.05;color:#A31F34;text-transform:none}
-.eb .sgs{display:block;margin-top:3px}
-.eb{margin-top:4px;padding-top:12px;padding-right:66px;border-top:1.5px solid var(--ink);font-family:var(--mono);font-weight:600;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#A31F34;opacity:0;transition:opacity .5s ease}
-.p.f:nth-of-type(4) .face{animation-delay:-2.5s!important}
-@keyframes drift{from{transform:translateY(-2px)}to{transform:translateY(3px)}}
+.p .face{display:block;object-fit:cover;border-radius:50%;box-shadow:0 8px 20px rgba(20,20,20,.18);transform:scale(.4)}
+.scene.ppl .p .face{animation:pop .75s cubic-bezier(.3,1.7,.5,1) var(--d,0s) both,drift 3.4s ease-in-out calc(var(--d,0s) + .75s) infinite alternate}
+.p .nm{font-weight:800;font-size:22px;line-height:1.05;letter-spacing:-.01em}
+.p .rl{margin-top:4px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-ink)}
+.me{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}
+.me .face{width:76px;height:76px;object-position:50% 10%;background:var(--orange)}
+.eb{padding-top:12px;border-top:1.5px solid var(--ink);opacity:0;transform:translateX(-14px);transition:opacity .5s ease var(--d,0s),transform .6s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.eb .sg{display:block;font-family:var(--sans);font-weight:800;font-size:clamp(24px,7vw,32px);letter-spacing:-.02em;line-height:1;color:#A31F34}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center}
+.pair .face{width:96px;height:96px;margin:0 auto 10px}
+.pair .nm{font-size:20px}
+.p .ex{margin-top:10px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 10px;align-items:center}
+.p .ex img{height:16px;width:auto;opacity:0;transform:scale(.3)}
+.scene.ppl .p .ex img{animation:pop .5s cubic-bezier(.3,1.7,.5,1) calc(var(--d,0s) + .6s + var(--i)*.12s) both}
+.pair .p:nth-child(2) .face{animation-duration:.75s,3.9s}
+@keyframes pop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:scale(1)}}
+@keyframes drift{from{transform:translateY(-3px)}to{transform:translateY(4px)}}
 .box{position:relative}
 .merge .brand{position:absolute;inset:0;justify-content:center;opacity:0;transform:scale(.85);transition:opacity .5s ease .75s,transform .6s cubic-bezier(.2,.7,.2,1) .75s}
 .merge .brand span{font-size:clamp(30px,8.6vw,44px)}
@@ -189,6 +191,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
 .scene.bigt .tag2 .l2a,.scene.bigt .tag2 .l2b{display:block;white-space:nowrap}
 .scene.bigt .box{display:none}
 .scene.swap .tag2{opacity:0}
+.scene.ppl .tag2,.scene.fuse .tag2{display:none}
 .tag2{margin-top:0;font-family:var(--display);font-size:min(20px,4.5vw);line-height:1.15;text-wrap:balance}
 .tag2 .ch{opacity:0;position:relative}
 .tag2 .ch.v{opacity:1}
@@ -221,25 +224,21 @@ body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:
     <div class="tag2"><span class="l1">Subconscious is being run with</span><span class="l2"><span class="l2a">a <span class="h">Tulane Heart</span>&nbsp;<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#006747"/></svg>,</span><span class="l2b"> and an <span class="m">MIT Mind</span>&nbsp;<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 1.6c-4.7 0-8.5 3.6-8.5 8.1 0 .9.1 1.7.4 2.5L3.2 15.6c-.3.5.1 1 .6 1H5.6v2.6c0 1.2 1 2.2 2.2 2.2h2v1.5h9.1v-5.3c1.8-1.6 3-3.9 3-6.5 0-4.9-3.9-9.5-8.5-9.5z" fill="#A31F34"/><g fill="#F8F7F4"><circle cx="11.4" cy="7.6" r="2.1"/><circle cx="14.3" cy="6.4" r="2.2"/><circle cx="17" cy="8.3" r="2"/><circle cx="16.4" cy="11.2" r="1.9"/><circle cx="13.6" cy="10.6" r="2.2"/><circle cx="10.6" cy="10.2" r="1.7"/><path d="M13.6 11.5h1.6l-.4 3.2h-.8z"/></g></svg></span></span></div>
     <div class="box">
       <div class="team">
-        <div class="p me" style="transition-delay:.3s">
+        <div class="p me" style="--d:.2s">
           <img class="face" src="img/michael.webp" alt="">
           <div><div class="nm">Michael Weild</div><div class="rl">Founding GTM · Tulane</div></div>
         </div>
-        <div class="eb" style="transition-delay:.7s"><span class="sg">MIT SUPERGENIUSES!</span><span class="sgs">The genius engineers behind the product</span></div>
-        <div class="p f" style="transition-delay:1s">
-          <img class="face" src="img/jack.webp" alt="">
-          <div>
+        <div class="eb" style="--d:.7s"><span class="sg">MIT SUPERGENIUSES!</span></div>
+        <div class="pair">
+          <div class="p f" style="--d:1s">
+            <img class="face" src="img/jack.webp" alt="">
             <div class="nm">Jack O'Brien</div><div class="rl">CEO · Co-founder</div>
-            <div class="cr">Ex-Google tech lead &amp; IBM engineer · MIT MBA</div>
-            <div class="ex"><img src="img/mit.webp" alt="MIT"><img src="img/ibm.webp" alt="IBM"><img src="img/google.webp" alt="Google"><img src="img/sandhill.webp" alt="Sandhill"></div>
+            <div class="ex"><img src="img/mit.webp" alt="MIT" style="--i:0"><img src="img/ibm.webp" alt="IBM" style="--i:1"><img src="img/google.webp" alt="Google" style="--i:2"><img src="img/sandhill.webp" alt="Sandhill" style="--i:3"></div>
           </div>
-        </div>
-        <div class="p f" style="transition-delay:1.4s">
-          <img class="face" src="img/hongyin.webp" alt="">
-          <div>
+          <div class="p f" style="--d:1.35s">
+            <img class="face" src="img/hongyin.webp" alt="">
             <div class="nm">Hongyin Luo</div><div class="rl">CTO · Co-founder</div>
-            <div class="cr">MIT CSAIL PhD · lead author of TIMRUN</div>
-            <div class="ex"><img src="img/csail.webp" alt="MIT CSAIL"><img src="img/tsinghua.webp" alt="Tsinghua University"><img src="img/aws.webp" alt="AWS"><img src="img/googleai.webp" alt="Google AI"></div>
+            <div class="ex"><img src="img/csail.webp" alt="MIT CSAIL" style="--i:0"><img src="img/tsinghua.webp" alt="Tsinghua University" style="--i:1"><img src="img/aws.webp" alt="AWS" style="--i:2"><img src="img/googleai.webp" alt="Google AI" style="--i:3"></div>
           </div>
         </div>
       </div>
